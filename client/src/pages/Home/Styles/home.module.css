@@ -40,7 +40,25 @@
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
 
+.button {
+    display: block;
+    background-color: #EFBC9B;
+    color: #363636;
+    width: 200px;
+    font-size: 16px;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .ourMission {
