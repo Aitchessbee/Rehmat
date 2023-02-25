@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #FCF5E5;
+    color: #015450;
+}
+.btn1{
+    font-size: 1.4em;
+    padding: 16px 40px;
+    gap: 30%;
+    background-color: #015450;
+    color:white;
+    border-radius: 12px;
+    width: 15vw;
+}
