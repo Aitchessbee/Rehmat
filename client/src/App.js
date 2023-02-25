@@ -3,6 +3,7 @@ import Home from "./pages/Home/Home";
 import RefSignup from "./pages/Signup/RefSignup";
 import Root from "./pages/Root/Root";
 import DocSignup from "./pages/Signup/DocSignup";
+import Login from "./pages/Login/Login";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/docsignup",
         element: <DocSignup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

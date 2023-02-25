@@ -29,4 +29,7 @@ a {
     top: 10%;
     right: 3%;
     height: 23vh;
+    mix-blend-mode: difference;
+    color: #272e5e;
+    filter: invert(1);
 }
