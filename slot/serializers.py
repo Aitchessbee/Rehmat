@@ -20,8 +20,8 @@ class ScheduledSlotSerializer(serializers.ModelSerializer):
 
 
 class PrescriptionSerializer(serializers.ModelSerializer):
-    patient = UserNameField()
-    doctor = UserNameField()
+    patient = UserNameField(read_only=True)
+    doctor = UserNameField(read_only=True)
 
     class Meta:
         model = Prescription

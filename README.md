@@ -73,7 +73,7 @@ Start the server
 #### Register
 
 ```http
-  POST /register/
+  POST /auth/register/
 ```
 multipart/form-data
 | Parameter | Type     | Description                |
@@ -91,6 +91,21 @@ multipart/form-data
 Returns `HTTP 201 CREATED` status code for succesful execution.
 
 Returns array of `{parameter: [error message 1, error_message 2, ...]}` objects for errors.
+
+
+#### Login (for both Doctor and Refugee)
+
+```http
+  POST /auth/login/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `token` | `string` | API key |
+| `name` | `string` | Name |
+| `role` | `string` | DR: Doctor, RF: Refugee |
+
+Returns `{"error": "Invalid Credentials!"}` for invalid login credentials.
 
 
 #### Free Slots of Logged In Doctor
