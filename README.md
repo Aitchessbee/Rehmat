@@ -92,3 +92,147 @@ Returns `HTTP 201 CREATED` status code for succesful execution.
 
 Returns array of `{parameter: [error message 1, error_message 2, ...]}` objects for errors.
 
+
+#### Free Slots of Logged In Doctor
+
+```http
+  GET /slot/view/available/doctor/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+
+
+#### Scheduled Slots of Logged In Doctor
+
+```http
+  GET /slot/view/scheduled/doctor/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+
+
+#### Scheduled Slots of Logged In Refugee
+
+```http
+  GET /slot/view/scheduled/refugee/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+
+
+#### Prescriptions given by Logged In Doctor
+
+```http
+  GET /slot/view/prescription/doctor/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `patient` | `string` | Patient Name |
+| `doctor` | `string` | Doctor Name |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+| `text` | `string` | Prescription Description |
+
+
+#### Previous Presecriptions of Logged In Refugee
+
+```http
+  GET /slot/view/prescription/refugee/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `patient` | `string` | Patient Name |
+| `doctor` | `string` | Doctor Name |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+| `text` | `string` | Prescription Description |
+
+#### Available Slots for booking (for refugee)
+
+```http
+  GET /slot/available-slots/
+```
+JSON Response Object format:
+`{"YYYY-MM-DD": ["HH:mm:SS", "HH:mm:SS", ...]}`
+
+
+#### Add free slot (for Doctor)
+
+```http
+  POST /slot/add-free/
+```
+JSON Request Data
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `date` | `date` | format: YYYY-MM-DD |
+| `time` | `time` | format: HH:mm:ss |
+
+Returns `201 CREATED` status code for succesful execution.
+
+
+#### Schedule slot (for Refugee)
+
+```http
+  POST /slot/schedule/
+```
+JSON Request Data
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `date` | `date` | format: YYYY-MM-DD |
+| `time` | `time` | format: HH:mm:ss |
+
+Returns `201 CREATED` status code for succesful execution.
+
+
+#### Previous Presecriptions of Refugee with given slot
+
+```http
+  GET /slot/patient-previous-prescriptions/<int:id>/
+```
+Here id is ID of Scheduled Slot Object
+
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `patient` | `string` | Patient Name |
+| `doctor` | `string` | Doctor Name |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+| `text` | `string` | Prescription Description |
+
+
+#### Cancel Scheduled Slot (for both Doctor and Refugee)
+
+```http
+  POST /slot/cancel/
+```
+JSON Request Data
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of Scheduled Slot Object |
+
+Returns `200 OK` status code for succesful execution.
+
+
+#### Cancel Free Slot (for Doctor)
+
+```http
+  POST /slot/cancel-doctor-free/
+```
+JSON Request Data
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of Scheduled Slot Object |
+
+Returns `200 OK` status code for succesful execution.

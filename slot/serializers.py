@@ -5,16 +5,24 @@ from .models import AvailableSlot, ScheduledSlot, Prescription
 class AvailableSlotSerializer(serializers.ModelSerializer):
     class Meta:
         model = AvailableSlot
-        fields = '__all__'
+        exclude = 'doctor'
+
+
+class UserNameField(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.name
 
 
 class ScheduledSlotSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScheduledSlot
-        fields = '__all__'
+        exclude = ['patient', 'doctor']
 
 
 class PrescriptionSerializer(serializers.ModelSerializer):
+    patient = UserNameField()
+    doctor = UserNameField()
+
     class Meta:
         model = Prescription
-        fields = '__all__'
+        fields = ['id', 'patient', 'doctor', 'time', 'text']
