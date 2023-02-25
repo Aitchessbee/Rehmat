@@ -11,7 +11,7 @@ const Login = () => {
         <img className={Styles.bgimg} src={wave} alt="wave png image"></img>
       </div>
       <div className={Styles.loginCard}>
-        <h2>Log In</h2>
+        <h2>Login</h2>
         <div className={Styles.textfield}>
           <TextField
             className={Styles.field}
