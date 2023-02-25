@@ -1,7 +1,10 @@
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 function Navbar() {
   return (
-    <div>Navbar</div>
+    <div>
+        <FileUploadIcon />
+    </div>
   )
 }
 
