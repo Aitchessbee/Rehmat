@@ -5,6 +5,7 @@ import styles from "./Styles/navbar.module.css";
 import BasicMenu from "./components/dropdown";
 import Person2Icon from "@mui/icons-material/Person2";
 import logo from "./Images/logo.png";
+import leaf from "./Images/leaf.png";
 
 function Navbar() {
   return (
@@ -23,6 +24,7 @@ function Navbar() {
           <select value={<Person2Icon />}>
             <option value="1">Hello</option>
           </select> */}
+          <img src={leaf} alt="leaf image" className={styles.leafimg}></img>
       </div>
     </nav>
   );
