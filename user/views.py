@@ -86,6 +86,3 @@ class LoginView(APIView):
             'name': user.name,
             'role': user.role
         }, status=status.HTTP_200_OK)        
-
-def index(request):
-    return render(request, 'slot/index.html')

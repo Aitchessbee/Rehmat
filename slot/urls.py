@@ -12,8 +12,9 @@ urlpatterns = [
     path('available-slots/', views.AvailableDoctorSlots.as_view()),
     path('add-free/', views.DoctorFreeSlotAdd.as_view()),
     path('schedule/', views.PatientFinaliseSlot.as_view()),
-    path('patient-previous-prescriptions/<int:id>', views.SlotPatientAllPrescriptions.as_view()),
+    path('patient-previous-prescriptions/<int:id>/', views.SlotPatientAllPrescriptions.as_view()),
     path('cancel/', views.CancelScheduledSlot.as_view()),
     path('cancel-doctor-free/', views.CancelDoctorFreeSlot.as_view()),
     path('meeting-token/', views.MeetingToken.as_view()),
+    path('call/<int:id>/', views.callView)
 ]

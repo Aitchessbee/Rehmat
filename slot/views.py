@@ -2,11 +2,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from django.http import HttpResponse
+from django.shortcuts import render
 
 from .serializers import AvailableSlotSerializer, ScheduledSlotSerializer, PrescriptionSerializer
 from .models import AvailableSlot, ScheduledSlot, Prescription
 
 from .permissions import IsDoctor, IsRefugee
+from .models import ScheduledSlot
 
 from datetime import datetime
 
@@ -161,3 +164,14 @@ class MeetingToken(APIView):
             'token': instance.token,
             'channel': instance.channel
         }, status=status.HTTP_200_OK)
+
+
+def callView(request, id):
+    slot = ScheduledSlot.objects.filter(id=id).first()
+    if slot.token=='':
+        return HttpResponse('Invalid ID')
+    
+    token = slot.token
+    channel = slot.channel
+
+    return render(request, 'slot/index.html', context={'token': token, 'channel': channel})

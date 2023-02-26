@@ -10,7 +10,8 @@ ENV PYTHONUNBUFFERED=1
 
 #tesseract install
 RUN apt-get update \
-  && apt-get -y install tesseract-ocr
+  && apt-get -y install tesseract-ocr \
+  && apt-get -y install ffmpeg libsm6 libxext6
 
 # Install pip requirements
 COPY requirements.txt .
