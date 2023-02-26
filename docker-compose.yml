@@ -7,8 +7,9 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports: 
-      - "3376:3376"
+      - "7376:7376"
     volumes:
       - ./static/:/app/static/
       - ./logs/:/app/logs/
       - ./media/:/app/media/
+      - ./database/:/app/database/
