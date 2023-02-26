@@ -8,6 +8,7 @@ import Error from "./pages/Error/Error";
 import Donation from "./pages/Donation/Donation";
 import Contact from "./pages/ContactUs/Contact";
 import RefugeeSlot from "./pages/RefugeeSlot/RefugeeSlot";
+import Meet from "./pages/live meeting/Meet";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,11 @@ const router = createBrowserRouter([
       {
         path: "/book-appointment",
         element: <RefugeeSlot />
-      }
+      },
+      {
+        path: "/meet",
+        element: <Meet />,
+      },
     ],
   },
 ]);

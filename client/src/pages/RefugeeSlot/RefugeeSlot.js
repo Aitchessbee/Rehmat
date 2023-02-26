@@ -14,9 +14,9 @@ function RefugeeSlot() {
     useEffect(() => {
         const token = localStorage.getItem("rehmat-token");
 
-        if(!token) {
-            navigate("/refugee-signup")
-        }
+        // if(!token) {
+        //     navigate("/refugee-signup")
+        // }
     }, []) 
 
 

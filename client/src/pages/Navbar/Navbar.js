@@ -14,7 +14,7 @@ function Navbar() {
         <Link to="/">
           <img src={logo} alt="Image not found" className={styles.logo} />
         </Link>
-        <a href="/book-appointment">SEEK HELP</a>
+        <Link to="/book-appointment">SEEK HELP</Link>
         <Link to="/contact-us">CONTACT US</Link>
         <Link to="/donate">DONATE</Link>
         {/* <div><Person2Icon /></div> */}

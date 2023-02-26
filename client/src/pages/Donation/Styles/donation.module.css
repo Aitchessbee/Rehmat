@@ -15,6 +15,10 @@
     font-size: 35px;
     font-family: Arial, Helvetica, sans-serif;
 }
+.container{
+    position:absolute;
+    top: 0%;
+}
 
 .priceGrid {
     display: grid;
@@ -39,4 +43,11 @@
     display: flex;
     gap: 30px;
     height: 40px;
+}
+.bgimg{
+    width: -webkit-fill-available;
+    display: inline;
+}
+.globe{
+   display: block;
 }
