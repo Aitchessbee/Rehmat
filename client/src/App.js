@@ -5,6 +5,8 @@ import Root from "./pages/Root/Root";
 import DocSignup from "./pages/Signup/DocSignup";
 import Login from "./pages/Login/Login";
 import Error from "./pages/Error/Error";
+import Donation from "./pages/Donation/Donation";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,17 +18,21 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/refsignup",
+        path: "/refugee-signup",
         element: <RefSignup />,
       },
       {
-        path: "/docsignup",
+        path: "/doctor-signup",
         element: <DocSignup />,
       },
       {
         path: "/login",
         element: <Login />,
       },
+      {
+        path: "/donate",
+        element: <Donation />,
+      }
     ],
   },
 ]);
