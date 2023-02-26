@@ -82,8 +82,6 @@ multipart/form-data
 | `password` | `string` | password | 
 | `name` | `string` | name (maximum length: 256) |
 | `phone_number` | `string` | phone number (with country code) | 
-| `gender` | `string` | gender text | 
-| `date_of_birth` | `string` | date of birth (Format: YYYY-MM-DD) |
 | `city` | `string` | city (maximum length: 128) | 
 | `country` | `string` | country (maximum length: 128) |
 | `role` | `string` | DR: Doctor; RF: Refugee |
@@ -128,8 +126,6 @@ multipart/form-data
 | `password` | `string` | password | 
 | `name` | `string` | name (maximum length: 256) |
 | `phone_number` | `string` | phone number (with country code) |
-| `gender` | `string` | gender text | 
-| `date_of_birth` | `string` | date of birth (Format: YYYY-MM-DD) |
 | `city` | `string` | city (maximum length: 128) | 
 | `country` | `string` | country (maximum length: 128) |
 | `role` | `string` | DR: Doctor; RF: Refugee |

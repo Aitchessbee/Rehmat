@@ -19,7 +19,6 @@ class User(AbstractBaseUser):
 
     name = models.CharField(max_length=256)
     phone_number = models.CharField(max_length=32)
-    date_of_birth = models.DateField(auto_now_add=False, auto_now=False)
     city = models.CharField(max_length=128)
     country = models.CharField(max_length=128)
     id_proof = models.ImageField(upload_to=id_upload_to)

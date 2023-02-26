@@ -6,7 +6,7 @@ from .models import User
 
 
 class UserModel(admin.ModelAdmin):
-    list_display = ('email', 'name', 'role', 'phone_number', 'date_of_birth', 'city', 'country', 'id_proof', 'is_verified_doctor')
+    list_display = ('email', 'name', 'role', 'phone_number', 'city', 'country', 'id_proof', 'is_verified_doctor')
     list_filter = ('role', )
     search_fields = ('name', 'email', 'phone_number', 'city', 'country')
     list_display_links = ('email', )

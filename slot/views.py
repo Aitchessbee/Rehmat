@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authtoken.models import Token
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -181,7 +183,7 @@ def callView(request, id):
     slot = ScheduledSlot.objects.filter(id=id).first()
     if slot.token1=='':
         return HttpResponse('Invalid ID')
-    
+
     token = slot.token2
     channel = slot.channel
     uid = slot.uid2
