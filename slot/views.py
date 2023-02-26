@@ -185,7 +185,7 @@ class MeetingToken(APIView):
 def callView(request, id):
     token_cookie = request.COOKIES.get('token')
     try:
-        token_object = Token.objects.get(token=token_cookie)
+        token_object = Token.objects.get(key=token_cookie)
 
         if token_object is None:
             return HttpResponseForbidden('Meeting not started yet!')
