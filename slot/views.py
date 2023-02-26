@@ -205,8 +205,6 @@ def callView(request, p, id):
         uid = slot.uid1
     else:
         return HttpResponseForbidden('Not Allowed!')
-    token = slot.token1
-    uid = slot.uid1
 
     return render(request, 'slot/index.html', context={'token': token, 'channel': channel, 'uid': uid})
     # except:
