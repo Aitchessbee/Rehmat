@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    image: kando/Rehmat
+    image: kando/rehmat
     build:
       context: .
       dockerfile: ./Dockerfile
