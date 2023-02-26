@@ -44,20 +44,20 @@ function Home() {
           <div className={styles.tile}>
             <img src={carousel1} alt="" style={{height: "70%"}}/>
             <div>NEED MEDICAL ATTENTION?<br /> REGISTER HERE TO GET FREE CONSULTATION</div>
-            <Link to="" className={styles.button}>SEEK HELP</Link>
+            <Link to="/refugee-signup" className={styles.button}>SEEK HELP</Link>
           </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className={styles.tile}>
               <img src={carousel2} alt="" style={{height: "70%"}}/>
               <div>1 FREE CONSULTATION A DAY CAN SAVE THE LIVES OF MILLIONS OF REFUGEES</div>
-              <Link to="" className={styles.button}>REGISTER AS A DOCTOR</Link>
+              <Link to="/doctor-signup" className={styles.button}>REGISTER AS A DOCTOR</Link>
             </div>
         </SwiperSlide>
         <SwiperSlide><div className={styles.tile}>
             <img src={carousel3} alt="" style={{height: "70%"}}/>
             <div>HERE'S YOUR CHANCE TO DO YOUR BIT, AND CONTRIBUTE TO A POSITIVE CAUSE</div>
-            <Link to="" className={styles.button}>DONATE NOW!</Link>
+            <Link to="/donate" className={styles.button}>DONATE NOW!</Link>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -71,7 +71,7 @@ function Home() {
       </Swiper>
 
       <div>
-        <img src={ourMission} alt="" className={styles.ourMissionHeading}/>
+        <img src={ourMission} alt="" className={styles.ourMissionHeading} id="aboutUs"/>
         <div className={styles.ourMission}>
           <div className={styles.ourMissionContent}>CONNECTING REFUGEES AND DOCTORS <br /> TO PROVIDE FREE HEALTHCARE FOR REFUGEES</div>
 

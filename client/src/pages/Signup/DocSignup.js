@@ -8,6 +8,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import { Button } from "@mui/material";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import Stack from "@mui/material/Stack";
+import wave from "./image/wave.png";
 
 const SubmitHandler = (event) => {
   event.preventDefault();
@@ -17,6 +18,9 @@ const DocSignup = () => {
   return (
     <>
       <div className="spacer"></div>
+      <div>
+        <img className={Styles.bgimg} src={wave} alt="wave png image"></img>
+      </div>
       <form onSubmit={SubmitHandler}>
         <div className={Styles.container1}>
           {" "}
