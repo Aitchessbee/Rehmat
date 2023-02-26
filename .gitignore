@@ -45,7 +45,6 @@ venv
 media
 
 logs
-static
 
 privkey.pem
 cert.pem
