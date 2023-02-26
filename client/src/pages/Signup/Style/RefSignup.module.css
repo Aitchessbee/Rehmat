@@ -46,4 +46,6 @@
     background-color: #015450;
     border:none;
     color: white;
+    cursor: pointer;
+    z-index: 5;
 }
