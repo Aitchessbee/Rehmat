@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Error from "./pages/Error/Error";
 import Donation from "./pages/Donation/Donation";
 import Contact from "./pages/ContactUs/Contact";
+import Meet from "./pages/live meeting/Meet";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <Contact />,
+      },
+      {
+        path: "/meet",
+        element: <Meet />,
       },
     ],
   },
