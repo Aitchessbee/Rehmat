@@ -151,3 +151,6 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser'
     ]
 }
+
+AGORA_APP_ID = config('AGORA_APP_ID')
+AGORA_CERTIFICATE = config('AGORA_CERTIFICATE')

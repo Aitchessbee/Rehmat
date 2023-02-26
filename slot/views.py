@@ -142,3 +142,22 @@ class CancelDoctorFreeSlot(APIView):
 
         instance.delete()
         return Response(status=status.HTTP_200_OK)
+
+
+class MeetingToken(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, id):
+        instance = ScheduledSlot.objects.filter(id=id).first()
+
+        if instance is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({
+            'id': instance.id,
+            'doctor': instance.doctor.name,
+            'patient': instance.patient.name,
+            'time': instance.time,
+            'token': instance.token,
+            'channel': instance.channel
+        }, status=status.HTTP_200_OK)

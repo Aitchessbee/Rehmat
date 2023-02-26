@@ -15,4 +15,5 @@ urlpatterns = [
     path('patient-previous-prescriptions/<int:id>', views.SlotPatientAllPrescriptions.as_view()),
     path('cancel/', views.CancelScheduledSlot.as_view()),
     path('cancel-doctor-free/', views.CancelDoctorFreeSlot.as_view()),
+    path('meeting-token/', views.MeetingToken.as_view()),
 ]

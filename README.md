@@ -251,3 +251,19 @@ JSON Request Data
 | `id` | `int` | ID of Scheduled Slot Object |
 
 Returns `200 OK` status code for succesful execution.
+
+
+#### Meeting Token (for both Doctor and Refugee)
+
+```http
+  GET /slot/meeting-token/
+```
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID of record |
+| `patient` | `string` | Patient Name |
+| `doctor` | `string` | Doctor Name |
+| `time` | `datetime` | format: YYYY-MM-DD HH:mm:ss |
+| `token` | `string` | Meeting Token |
+| `channel` | `string` | Meeting Channel Name |
