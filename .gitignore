@@ -48,3 +48,8 @@ slot/templates
 slot/static
 
 data
+logs
+static
+
+privkey.pem
+cert.pem

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 
     'user',
     'slot',
@@ -154,3 +155,24 @@ REST_FRAMEWORK = {
 
 AGORA_APP_ID = config('AGORA_APP_ID')
 AGORA_CERTIFICATE = config('AGORA_CERTIFICATE')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+    },
+}
+
+CORS_ALLOW_ALL_ORIGINS = True

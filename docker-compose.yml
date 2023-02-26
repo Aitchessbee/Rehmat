@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api:
+    image: kando/Rehmat
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports: 
+      - "3376:3376"
+    volumes:
+      - ./static/:/app/static/
+      - ./logs/:/app/logs/
+      - ./media/:/app/media/
