@@ -182,32 +182,32 @@ class MeetingToken(APIView):
         }, status=status.HTTP_200_OK)
 
 
-def callView(request, id):
-    token_cookie = request.COOKIES.get('token')
-    try:
-        token_object = Token.objects.get(key=token_cookie)
+def callView(request, p, id):
+    # token_cookie = request.COOKIES.get('token')
+    # try:
+    #     token_object = Token.objects.get(key=token_cookie)
 
-        if token_object is None:
-            return HttpResponseForbidden('Meeting not started yet!')
+    #     if token_object is None:
+    #         return HttpResponseForbidden('Meeting not started yet!')
         
-        user = token_object.user
+    #     user = token_object.user
 
-        slot = ScheduledSlot.objects.filter(id=id).first()
-        if slot.token1=='':
-            return HttpResponse('Invalid ID')
+    slot = ScheduledSlot.objects.filter(id=id).first()
+    if slot.token1=='':
+        return HttpResponse('Invalid ID')
 
-        channel = slot.channel
-        if slot.patient==user:
-            token = slot.token2
-            uid = slot.uid2
-        elif slot.doctor==user:
-            token = slot.token1
-            uid = slot.uid1
-        else:
-            return HttpResponseForbidden('Not Allowed!')
+    channel = slot.channel
+    if p==1:
+        token = slot.token2
+        uid = slot.uid2
+    elif p==2:
         token = slot.token1
         uid = slot.uid1
-
-        return render(request, 'slot/index.html', context={'token': token, 'channel': channel, 'uid': uid})
-    except:
+    else:
         return HttpResponseForbidden('Not Allowed!')
+    token = slot.token1
+    uid = slot.uid1
+
+    return render(request, 'slot/index.html', context={'token': token, 'channel': channel, 'uid': uid})
+    # except:
+    #     return HttpResponseForbidden('Not Allowed!')
