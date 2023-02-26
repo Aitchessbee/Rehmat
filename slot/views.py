@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
 
 from .serializers import AvailableSlotSerializer, ScheduledSlotSerializer, PrescriptionSerializer
@@ -57,7 +57,8 @@ class SlotView(APIView):
 class AvailableDoctorSlots(APIView):
     permission_classes = [IsAuthenticated&IsRefugee]
 
-    def get(self, request):
+    def post(self, request):
+        date = request.data.get('date')
         queryset = AvailableSlot.objects.distinct('time')
         
         data = {}
@@ -67,8 +68,10 @@ class AvailableDoctorSlots(APIView):
                 data[key].append([item.time.time()])
             else:
                 data[key] = [item.time.time()]
+
+        date = date.strptime(date, 'YYYY-MM-DD')
         
-        return Response(data, status=status.HTTP_200_OK)
+        return Response(data[date], status=status.HTTP_200_OK)
 
 
 class DoctorFreeSlotAdd(APIView):
@@ -180,12 +183,26 @@ class MeetingToken(APIView):
 
 
 def callView(request, id):
+    token_cookie = request.COOKIES.get('token')
+    token_object = Token.objects.filter(token=token_cookie).first()
+
+    if token_object is None:
+        return HttpResponseForbidden('Meeting not started yet!')
+    
+    user = token_object.user
+
     slot = ScheduledSlot.objects.filter(id=id).first()
     if slot.token1=='':
         return HttpResponse('Invalid ID')
 
-    token = slot.token2
     channel = slot.channel
-    uid = slot.uid2
+    if slot.patient==user:
+        token = slot.token2
+        uid = slot.uid2
+    elif slot.doctor==user:
+        token = slot.token1
+        uid = slot.uid1
+    else:
+        return HttpResponseForbidden('Not Allowed!')
 
     return render(request, 'slot/index.html', context={'token': token, 'channel': channel, 'uid': uid})

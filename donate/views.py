@@ -32,7 +32,7 @@ def customer_id(name):
 def order_id():
     return f"rehmat_{datetime.now().strftime('%Y%m%D%H%M%S')}_{''.join(choice(string.ascii_letters + string.digits) for _ in range(10))}"
 
-class InitialePayment(APIView):
+class InitialPayment(APIView):
     def post(self, request):
         amount = request.data.get('amount')
 
