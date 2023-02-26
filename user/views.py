@@ -46,10 +46,10 @@ class ValidateRefugee(APIView):
         file = request.data.get('id_proof')
         file_name = f'validate/{file.name}'
         file_name = default_storage.save(file_name, file)
-        try:
-            list = validate(file_name)
-        except:
-            return Response({'error': 'Invalid ID card'}, status=status.HTTP_400_BAD_REQUEST)
+        # try:
+        list = validate(file_name)
+        # except:
+        #     return Response({'error': 'Invalid ID card'}, status=status.HTTP_400_BAD_REQUEST)
         if list[0]=='Invalid':
             return Response({'error': 'Invalid ID card'}, status=status.HTTP_400_BAD_REQUEST)
         instance = ValidationImage(image_name=file_name)

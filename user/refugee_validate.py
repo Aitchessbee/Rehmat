@@ -8,7 +8,7 @@ import csv
 
 
 def validate(file_name):
-    pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+    # pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
     scale = 0.5
     point1 = []
     point2 = []
