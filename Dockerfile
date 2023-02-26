@@ -9,9 +9,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 #tesseract install
-# RUN sudo apt-get update
-# RUN sudo apt-get install tesseract-ocr
-# RUN sudo apt-get install libtesseract-dev
+RUN apt-get update \
+  && apt-get -y install tesseract-ocr
 
 # Install pip requirements
 COPY requirements.txt .
