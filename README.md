@@ -70,7 +70,7 @@ Start the server
   
 ## API Reference
 
-#### Register
+#### Register (for Doctor)
 
 ```http
   POST /auth/register/
@@ -82,11 +82,59 @@ multipart/form-data
 | `password` | `string` | password | 
 | `name` | `string` | name (maximum length: 256) |
 | `phone_number` | `string` | phone number (with country code) | 
+| `gender` | `string` | gender text | 
 | `date_of_birth` | `string` | date of birth (Format: YYYY-MM-DD) |
 | `city` | `string` | city (maximum length: 128) | 
 | `country` | `string` | country (maximum length: 128) |
 | `role` | `string` | DR: Doctor; RF: Refugee |
 | `id_proof` | `file` | ID Proof Image File |
+
+Returns `HTTP 201 CREATED` status code for succesful execution.
+
+Returns array of `{parameter: [error message 1, error_message 2, ...]}` objects for errors.
+
+
+#### Card verification (for Refugee)
+
+```http
+  POST /auth/verify/
+```
+multipart/form-data
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id_proof` | `file` | ID Proof Image File |
+
+JSON Response
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `int` | ID for temp id proof entry |
+| `unhrc_number` | `string` | UNHRC Number |
+| `name` | `string` | Name of Refugee |
+| `date_of_birth` | `string` | Format: DD/MM/YYYY |
+| `country` | `string` | Country of Refugee |
+
+Returns array of `{parameter: [error message 1, error_message 2, ...]}` objects for errors.
+
+
+#### Register (for Refugee)
+
+```http
+  POST /auth/register/
+```
+multipart/form-data
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email` | `string` | email id (maximum length: 256) |
+| `password` | `string` | password | 
+| `name` | `string` | name (maximum length: 256) |
+| `phone_number` | `string` | phone number (with country code) |
+| `gender` | `string` | gender text | 
+| `date_of_birth` | `string` | date of birth (Format: YYYY-MM-DD) |
+| `city` | `string` | city (maximum length: 128) | 
+| `country` | `string` | country (maximum length: 128) |
+| `role` | `string` | DR: Doctor; RF: Refugee |
+| `unhrc_number` | `string` | maximum length 128 |
+| `id` | `int` | ID for temp id proof entry |
 
 Returns `HTTP 201 CREATED` status code for succesful execution.
 

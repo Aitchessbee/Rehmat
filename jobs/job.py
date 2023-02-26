@@ -21,6 +21,6 @@ def createToken(slot):
     slot.save()
 
 def createTokens():
-    slots = ScheduledSlot.objects.filter(time_lte=datetime.now()+timedelta(minutes=10), token=''),all()
+    slots = ScheduledSlot.objects.filter(time__lte=datetime.now()+timedelta(minutes=10), token='').all()
     for slot in slots:
         createToken(slot)

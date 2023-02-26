@@ -18,10 +18,11 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=256, primary_key=True)
 
     name = models.CharField(max_length=256)
-    phone_number = models.CharField(max_length=20, unique=True)
+    phone_number = models.CharField(max_length=32)
     date_of_birth = models.DateField(auto_now_add=False, auto_now=False)
     city = models.CharField(max_length=128)
     country = models.CharField(max_length=128)
+    gender = models.CharField(max_length=32, default='')
     id_proof = models.ImageField(upload_to=id_upload_to)
 
     role = models.CharField(max_length=2, choices=DESIGNATION_CHOICES)
@@ -32,6 +33,8 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     is_verified_doctor = models.BooleanField(default=False)
+
+    unhrc_number = models.CharField(max_length=128, default='')
 
     objects = UserManager()
 
@@ -49,3 +52,10 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+    
+
+class ValidationImage(models.Model):
+    image_name = models.CharField(max_length=2500)
+
+    def __str__(self):
+        return str(self.id)
