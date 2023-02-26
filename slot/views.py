@@ -183,26 +183,28 @@ class MeetingToken(APIView):
 
 
 def callView(request, id):
-    token_cookie = request.COOKIES.get('token')
-    token_object = Token.objects.filter(token=token_cookie).first()
+    # token_cookie = request.COOKIES.get('token')
+    # token_object = Token.objects.filter(token=token_cookie).first()
 
-    if token_object is None:
-        return HttpResponseForbidden('Meeting not started yet!')
+    # if token_object is None:
+    #     return HttpResponseForbidden('Meeting not started yet!')
     
-    user = token_object.user
+    # user = token_object.user
 
     slot = ScheduledSlot.objects.filter(id=id).first()
     if slot.token1=='':
         return HttpResponse('Invalid ID')
 
     channel = slot.channel
-    if slot.patient==user:
-        token = slot.token2
-        uid = slot.uid2
-    elif slot.doctor==user:
-        token = slot.token1
-        uid = slot.uid1
-    else:
-        return HttpResponseForbidden('Not Allowed!')
+    # if slot.patient==user:
+    #     token = slot.token2
+    #     uid = slot.uid2
+    # elif slot.doctor==user:
+    #     token = slot.token1
+    #     uid = slot.uid1
+    # else:
+    #     return HttpResponseForbidden('Not Allowed!')
+    token = slot.token1
+    uid = slot.uid1
 
     return render(request, 'slot/index.html', context={'token': token, 'channel': channel, 'uid': uid})
