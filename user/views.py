@@ -43,8 +43,8 @@ class Register(APIView):
             image_instance = ValidationImage.objects.filter(id=image_id).first()
             with open(os.path.join(settings.MEDIA_ROOT, image_instance.image_name), mode='rb') as f:
                 user.id_proof = File(f, name=image_instance.image_name)
-            
-            user.save()
+                user.save()
+
             user.set_password(password)
             user.save()
 
