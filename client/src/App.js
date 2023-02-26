@@ -5,6 +5,8 @@ import Root from "./pages/Root/Root";
 import DocSignup from "./pages/Signup/DocSignup";
 import Login from "./pages/Login/Login";
 import Error from "./pages/Error/Error";
+import Contact from "./pages/ContactUs/Contact";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/contactus",
+        element: <Contact />,
       },
     ],
   },
