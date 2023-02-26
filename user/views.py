@@ -26,7 +26,7 @@ class Register(APIView):
         data = request.data.copy()
 
         if data['role']=='RF':
-            image_id = data['image_id']
+            image_id = data.get('image_id')
             image_instance = ValidationImage.objects.filter(id=image_id).first()
             with open(os.path.join(settings.MEDIA_ROOT, image_instance.image_name), mode='rb') as f:
                 data['id_proof'] = File(f, name=image_instance.image_name)
