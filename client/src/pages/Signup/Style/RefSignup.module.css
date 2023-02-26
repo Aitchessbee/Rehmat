@@ -34,3 +34,16 @@
     width: 100vw;
 }
 
+.uploadButton {
+    background-color:#015450;
+    color: white;
+}
+
+.submitButton {
+    height: 50px;
+    width: 200px;
+    border-radius: 15px;
+    background-color: #015450;
+    border:none;
+    color: white;
+}

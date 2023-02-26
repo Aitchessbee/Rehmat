@@ -44,7 +44,7 @@ function Home() {
           <div className={styles.tile}>
             <img src={carousel1} alt="" style={{height: "70%"}}/>
             <div>NEED MEDICAL ATTENTION?<br /> REGISTER HERE TO GET FREE CONSULTATION</div>
-            <Link to="/refugee-signup" className={styles.button}>SEEK HELP</Link>
+            <Link to="/book-appointment" className={styles.button}>SEEK HELP</Link>
           </div>
         </SwiperSlide>
         <SwiperSlide>
