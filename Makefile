@@ -9,7 +9,6 @@ recreateall:
 	make create
 
 redeploy:
-	sudo docker stop merch-store_merchstoreapi_1
-	sudo docker rm merch-store_merchstoreapi_1
+	make destroy
 	git pull
-	sudo docker-compose up --no-recreate --build -d
+	make create
