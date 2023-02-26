@@ -9,6 +9,7 @@ import Donation from "./pages/Donation/Donation";
 import Contact from "./pages/ContactUs/Contact";
 import RefugeeSlot from "./pages/RefugeeSlot/RefugeeSlot";
 import Meet from "./pages/live meeting/Meet";
+import PastReports from "./pages/PastReports/PastReports";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: "/meet",
         element: <Meet />,
       },
+      {
+        path: "/past-reports",
+        element: <PastReports />
+      }
     ],
   },
 ]);

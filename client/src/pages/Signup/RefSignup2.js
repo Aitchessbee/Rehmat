@@ -12,62 +12,46 @@ import FileUploadIcon from "@mui/icons-material/FileUpload";
 import Stack from "@mui/material/Stack";
 import wave from "./image/wave.png";
 
-import axios from "axios";
+import axios from "axios"
 import { api_url } from "../../config";
+import { useNavigate } from "react-router-dom";
 
 
-const DocSignup = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [city, setCity] = useState();
-  const [country, setCountry] = useState();
-  const [phone_number, setPhoneNumber] = useState();
-  const [verificationCard, setVerificationCard] = useState();
+
+const RefSignup2 = (props) => {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [city, setCity] = useState();
+    const [country, setCountry] = useState();
+    const [phone_number, setPhoneNumber] = useState();
 
 
-  const SubmitHandler = async (event) => {
-      event.preventDefault();
-
-      if(verificationCard) {
-        const formData = new FormData()
-        formData.append("id_proof", verificationCard);
-        formData.append("name", name);
-        formData.append("city", city);
-        formData.append("country", country);
-        formData.append("password", password);
-        formData.append("phone_number", phone_number);
-        formData.append("role", "DR");
-
+    const SubmitHandler = async (event) => {
+        event.preventDefault();
         
-        const config = {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          }
+        const data = {
+            "name": name,
+            "city": city,
+            "country": country,
+            "password": password,
+            "unhrc_number": props.unhrc_number,
+            "id": props.id,
+            "phone_number": phone_number,
+            "role": "RF"
         }
-      
 
-      const res = await axios.post(`${api_url}auth/register/`, formData, config)
+        const res = await axios.post(`${api_url}auth/register/`, data)
 
-      if(res.status == 200) {
-          alert("Registered Successfully");
-          setName("");
-          setEmail("");
-          setPassword("");
-          setCity("");
-          setCountry("");
-          setPhoneNumber("");
-      }
+        if(res.status == 200) {
+            alert("Registered Successfully");
+            setName("");
+            setEmail("");
+            setPassword("");
+            setCity("");
+            setCountry("");
+        }
     };
-    } 
-    const onImageSelect = (e) => {
-      if (e.target.files[0].size > 10000000) {
-        alert("File size should be below 10MB!")
-        setVerificationCard()
-      } else {
-        setVerificationCard(e.target.files[0])
-      }
-    }
 
   return (
     <>
@@ -79,6 +63,9 @@ const DocSignup = () => {
         <div className={Styles.container1}>
           {" "}
           <h2>Sign Up</h2>
+
+          <div>UNHRC Number: {props.id}</div>
+
           <TextField
             className={Styles.field}
             id="standard-basic"
@@ -129,29 +116,14 @@ const DocSignup = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
+
           <Button variant="contained" href="#contained-buttons" onClick={SubmitHandler}>
             Submit
           </Button>
-        </div>
-        <div className={Styles.V1}></div>
-        <div className={Styles.container2}>
-          {" "}
-          <h2>Upload your Doctor Certification</h2>
-          <Stack direction="row" alignItems="center" spacing={2}>
-            <Button
-              className={Styles.btn1}
-              variant="contained"
-              component="label"
-            >
-              Upload
-              <input hidden accept="image/*" multiple type="file" onChange={onImageSelect}/>
-              <FileUploadIcon />
-            </Button>
-          </Stack>
         </div>
       </form>
     </>
   );
 };
 
-export default DocSignup;
+export default RefSignup2;
