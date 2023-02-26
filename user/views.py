@@ -11,7 +11,7 @@ from django.conf import settings
 from django.core.files import File
 
 from .serializers import UserSerializer
-from .refugee_validate import validate
+# from .refugee_validate import validate
 from .models import ValidationImage, User
 
 import os
