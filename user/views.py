@@ -26,16 +26,35 @@ class Register(APIView):
         data = request.data.copy()
 
         if data['role']=='RF':
+
+            email = request.data.get('email')
+            password = request.data.get('password')
+            name = request.data.get('name')
+            phone_number = request.data.get('phone_number')
+            city = request.data.get('city')
+            country = request.data.get('country')
+
+            if User.objects.filter(email=email).exists():
+                return Response({'error': 'Email already registered!'}, status=status.HTTP_400_BAD_REQUEST)
+
+            user = User(email=email, password=password, name=name, phone_number=phone_number, city=city, country=country, role='RF')
+
             image_id = data.get('image_id')
             image_instance = ValidationImage.objects.filter(id=image_id).first()
             with open(os.path.join(settings.MEDIA_ROOT, image_instance.image_name), mode='rb') as f:
-                data['id_proof'] = File(f, name=image_instance.image_name)
+                user.id_proof = File(f, name=image_instance.image_name)
+            
+            user.save()
+            user.set_password(password)
+            user.save()
 
-        serializer = UserSerializer(data=data)
-        if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer = UserSerializer(data=data)
+            if not serializer.is_valid():
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-        serializer.save()
+            serializer.save()
+        
         return Response(status=status.HTTP_201_CREATED)
 
 
