@@ -7,23 +7,52 @@ import "react-calendar/dist/Calendar.css";
 import Button from "./components/Button";
 import left_triangle from "./images/left_triangle.png";
 import wave from "./images/wave.png";
+import { api_url } from "../../config";
+
+// import { Button } from "@mui/material";
+
+import axios from "axios";
+
 
 function RefugeeSlot() {
   const [timeSlots, setTimeSlots] = useState([]);
+  const [value, onChange] = useState(new Date());
+
+  const submitHandler = () => {
+    alert("Slot Booked!")
+  }
+
+    const dateFormat = value.getFullYear() + "-" + (value.getMonth()+1) + "-" + value.getDate();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("rehmat-token");
 
-    if(!token) {
-        navigate("/refugee-signup")
-    }
+    // if(!token) {
+    //     navigate("/refugee-signup")
+    // }
   }, []);
 
   useEffect(() => {
     console.log(timeSlots);
   }, [timeSlots]);
+
+
+
+  useEffect(() => {
+    const getSlots = async () => {
+        const data = {
+            "date": dateFormat,
+        }
+    
+        const res = await axios.post(`${api_url}slot/available-slots/`, data)
+    }
+    
+    getSlots();
+    
+  }, [dateFormat])
+
 
   const addValue = (value) => {
     setTimeSlots((prevTimeSlots) => [...prevTimeSlots, value]);
@@ -44,7 +73,7 @@ function RefugeeSlot() {
       <h1 className={styles.heading}>BOOK AN APPOINTMENT</h1>
       <div className={styles.columns}>
         <div className={styles.calendarDiv}>
-          <Calendar />
+          <Calendar onChange={onChange} value={value} />
         </div>
 
         <div className={styles.slotsDiv}>
@@ -98,6 +127,11 @@ function RefugeeSlot() {
           />
         </div>
       </div>
+
+      {/* <Button variant="contained" onClick={submitHandler}>SUBMTI</Button> */}
+
+      <button style={{display: "block", margin: "50px auto", width: "150px", height: "40px", backgroundColor: "darkblue", color: "white"}} onClick={submitHandler}>SUBMIT</button>
+
       <img
         style={{ height: " 22vh", position: "absolute", bottom: " 0%" }}
         src={left_triangle}

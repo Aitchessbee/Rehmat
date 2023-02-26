@@ -29,19 +29,25 @@ const RefSignup2 = (props) => {
 
     const SubmitHandler = async (event) => {
         event.preventDefault();
-        
-        const data = {
-            "name": name,
-            "city": city,
-            "country": country,
-            "password": password,
-            "unhrc_number": props.unhrc_number,
-            "id": props.id,
-            "phone_number": phone_number,
-            "role": "RF"
+
+        const formData = new FormData();
+
+        formData.append("name", name);
+        formData.append("city", city);
+        formData.append("country", country);
+        formData.append("password", password);
+        formData.append("unhrc_number", props.unhrc_number);
+        formData.append("image_id", props.id);
+        formData.append("phone_number", phone_number);
+        formData.append("role", "RF");
+
+        const config = {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            }
         }
 
-        const res = await axios.post(`${api_url}auth/register/`, data)
+        const res = await axios.post(`${api_url}auth/register/`, formData, config)
 
         if(res.status == 200) {
             alert("Registered Successfully");

@@ -38,10 +38,9 @@ const Contact = () => {
             <TextField
             className={Styles.field}
               id="standard-multiline-static"
-              label="Multiline"
+              label="Your Questions"
               multiline
               rows={4}
-              defaultValue="Your Questions"
               variant="standard"
             />
             <Button variant="contained" href="#contained-buttons">
