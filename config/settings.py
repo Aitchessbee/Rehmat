@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'user',
     'slot',
+    'donate'
 ]
 
 MIDDLEWARE = [
@@ -172,3 +173,6 @@ LOGGING = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CF_CLIENT_ID = config('CF_CLIENT_ID')
+CF_SECRET_KEY = config('CF_SECRET_KEY')

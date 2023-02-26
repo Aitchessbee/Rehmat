@@ -51,3 +51,5 @@ privkey.pem
 cert.pem
 
 database
+
+jobs.sqlite

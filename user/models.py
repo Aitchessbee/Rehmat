@@ -22,7 +22,6 @@ class User(AbstractBaseUser):
     date_of_birth = models.DateField(auto_now_add=False, auto_now=False)
     city = models.CharField(max_length=128)
     country = models.CharField(max_length=128)
-    gender = models.CharField(max_length=32, default='')
     id_proof = models.ImageField(upload_to=id_upload_to)
 
     role = models.CharField(max_length=2, choices=DESIGNATION_CHOICES)

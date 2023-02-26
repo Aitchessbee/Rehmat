@@ -155,13 +155,24 @@ class MeetingToken(APIView):
 
         if instance is None:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
+        
+        if instance.role=='DR':
+            return Response({
+                'id': instance.id,
+                'doctor': instance.doctor.name,
+                'patient': instance.patient.name,
+                'time': instance.time,
+                'token': instance.token1,
+                'uid': instance.uid1,
+                'channel': instance.channel
+            }, status=status.HTTP_200_OK)
         return Response({
             'id': instance.id,
             'doctor': instance.doctor.name,
             'patient': instance.patient.name,
             'time': instance.time,
-            'token': instance.token,
+            'token': instance.token2,
+            'uid': instance.uid2,
             'channel': instance.channel
         }, status=status.HTTP_200_OK)
 
