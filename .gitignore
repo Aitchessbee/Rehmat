@@ -44,9 +44,6 @@ venv
 #media root directory
 media
 
-slot/templates
-slot/static
-
 logs
 static
 

@@ -168,10 +168,11 @@ class MeetingToken(APIView):
 
 def callView(request, id):
     slot = ScheduledSlot.objects.filter(id=id).first()
-    if slot.token=='':
+    if slot.token1=='':
         return HttpResponse('Invalid ID')
     
-    token = slot.token
+    token = slot.token2
     channel = slot.channel
+    uid = slot.uid2
 
-    return render(request, 'slot/index.html', context={'token': token, 'channel': channel})
+    return render(request, 'slot/index.html', context={'token': token, 'channel': channel, 'uid': uid})
