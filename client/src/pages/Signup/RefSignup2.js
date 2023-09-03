@@ -49,7 +49,7 @@ const RefSignup2 = (props) => {
 
         const res = await axios.post(`${api_url}auth/register/`, formData, config)
 
-        if(res.status == 200) {
+        if(res.status == 201) {
             alert("Registered Successfully");
             setName("");
             setEmail("");
@@ -70,7 +70,7 @@ const RefSignup2 = (props) => {
           {" "}
           <h2>Sign Up</h2>
 
-          <div>UNHRC Number: {props.id}</div>
+          <div>UNHRC Number: {props.unhrc_number}</div>
 
           <TextField
             className={Styles.field}

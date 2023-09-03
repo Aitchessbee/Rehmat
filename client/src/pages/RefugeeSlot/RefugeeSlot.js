@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import Calendar from "react-calendar";
 import styles from "./Styles/refugeeSlot.module.css";
@@ -13,6 +13,7 @@ import { api_url } from "../../config";
 
 import axios from "axios";
 
+import avatar from "./images/avatar.png";
 
 function RefugeeSlot() {
   const [timeSlots, setTimeSlots] = useState([]);
@@ -70,70 +71,92 @@ function RefugeeSlot() {
         <img className={styles.bgimg} src={wave} alt="wave png image"></img>
       </div>
       <div className="spacer"></div>
+
+      <h1 className={styles.heading}>CURRENT APPOINTMENTS</h1>
+      {/* <div>You have no current appointments</div> */}
+      <div className={styles.container}>
+        <div className={styles.avatarDiv}>
+          {" "}
+          <img
+            style={{ width: "7vw" }}
+            src={avatar}
+            alt="avatar image"
+          ></img>
+          <h3>DR. STEPHEN FLEMING CARDIOLOGIST</h3>
+        </div>
+        <div>
+            <a href="https://rehmat-api.ccstiet.com/slot/call/1/1" className={styles.vidBtn} target="_blank">Start Video Call</a>
+        </div>
+      </div>
+
       <h1 className={styles.heading}>BOOK AN APPOINTMENT</h1>
       <div className={styles.columns}>
         <div className={styles.calendarDiv}>
           <Calendar onChange={onChange} value={value} />
         </div>
+        <div>
+          {" "}
+          <div className={styles.slotsDiv}>
+            <Button
+              value="9:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="10:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="11:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="12:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="13:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="14:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="15:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+            <Button
+              value="16:00"
+              addValue={addValue}
+              removeValue={removeValue}
+              slotList={timeSlots}
+            />
+          </div>
+          <a href="https://rehmat-api.ccstiet.com/slot/call/1/1" className={styles.vidBtn} target="_blank">Book Slot</a>
 
-        <div className={styles.slotsDiv}>
-          <Button
-            value="9:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="10:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="11:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="12:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="13:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="14:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="15:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
-          <Button
-            value="16:00"
-            addValue={addValue}
-            removeValue={removeValue}
-            slotList={timeSlots}
-          />
         </div>
       </div>
 
       {/* <Button variant="contained" onClick={submitHandler}>SUBMTI</Button> */}
 
-      <button style={{display: "block", margin: "50px auto", width: "150px", height: "40px", backgroundColor: "darkblue", color: "white"}} onClick={submitHandler}>SUBMIT</button>
+      {/* <button style={{display: "block", margin: "50px auto", width: "150px", height: "40px", backgroundColor: "darkblue", color: "white"}} onClick={submitHandler}>SUBMIT</button> */}
 
       <img
-        style={{ height: " 22vh", position: "absolute", bottom: " 0%" }}
+        style={{ height: " 22vh", position: "fixed", bottom: " 0%" }}
         src={left_triangle}
         alt="left triangle png"
       ></img>
